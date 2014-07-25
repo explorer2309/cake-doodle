@@ -1,0 +1,18 @@
+{
+  "name": "cake-doodle",
+  "version": "0.0.0",
+  "authors": [
+    "Puneet Bhasin <puneetsbhasin@gmail.com>"
+  ],
+  "description": "It is to desirability, what doodle.com is to availability",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/explorer2309/cake-doodle"
+}
