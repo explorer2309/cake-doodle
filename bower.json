@@ -14,5 +14,9 @@
     "test",
     "tests"
   ],
-  "homepage": "https://github.com/explorer2309/cake-doodle"
+  "homepage": "https://github.com/explorer2309/cake-doodle",
+  "dependencies": {
+    "knockout": "~3.1.0",
+    "reqwest": "~1.1.1"
+  }
 }
