@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cake doodle</title>
+        <meta name="viewport" content="width = 400, initial-scale = 1.3">
+    </head>
+    <body>
+        <h1>Cake Doodle</h1>
+
+        <div id="createDoodle">
+            Name:
+            <input type="text" data-bind="value: name" />
+
+            <br />
+
+            Options:
+            <ul>
+                <!-- ko foreach: options -->
+                <li>
+                    <input type="text" data-bind="value: $data" />
+                    <button data-bind="click: $root.removeOption">-</button>
+                </li>
+                <!-- /ko -->
+                <li>
+                    <input type="text" data-bind="value: optionToAdd" />
+                    <button data-bind="click: addOption">+</button>
+                </li>
+            </ul>
+
+            <button data-bind="click: createDoodle">Create Doodle</button>
+        </div>
+
+        <div id="fillDoodle">
+
+            <h1 data-bind="text: name"></h1>
+
+            <table>
+                <tr>
+                    <th>&nbsp;</th>
+                    <!-- ko foreach: options -->
+                    <th></th>
+                    <!-- /ko -->
+                </tr>
+                <!-- ko foreach: entries -->
+                <tr>
+                    <td data-bind="value: name"></td>
+                    <!-- ko foreach: options -->
+                    <td><input type="checkbox" data-bind="checked: selected"/></td>
+                    <!-- /ko -->
+                </tr>
+                <!-- /ko -->
+                <tr>
+                    <td data-bind="value: name"></td>
+                    <!-- ko foreach: options -->
+                    <td><input type="checkbox" data-bind="checked: selected"/></td>
+                    <!-- /ko -->
+                </tr>
+            </table>
+
+        </div>
+    </body>
+    <script src="/Scripts/require/require.js" data-main="main"></script>
+    <script type="text/javascript" src="app.js" defer="defer"></script>
+</html>
