@@ -9,6 +9,7 @@ function CreateDoodleViewModel() {
 	};
 
 	self.removeOption = function(optionToRemove) {
+		console.log(arguments);
 		var optionsToRemain = self.options().filter(function(option) {
 			return option !== optionToRemove;
 		});
@@ -25,14 +26,21 @@ function CreateDoodleViewModel() {
 	};
 
 	function addNewOptionToOptionsList() {
-		if (self.optionToAdd()){
-			self.options.push(self.optionToAdd());
+		var optionToAdd = self.optionToAdd();
+		if (optionToAdd){
+			self.options.push(optionToAdd);
 		}
-		self.optionToAdd(null);
+		self.optionToAdd('');
 	}
 
 	function saveData(data) {
-
+		reqwest({
+			url: 'path/to/html',
+			method: 'post',
+			data: { foo: 'bar', baz: 100 }
+		).done(function(data){
+			console.log('saved');
+		});
 	}
 }
 

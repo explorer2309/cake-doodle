@@ -704,11 +704,11 @@ function CreateDoodleViewModel() {
 	self.optionToAdd = ko.observable();
 
 	self.addOption = function() {
-		self.options.push(self.optionToAdd());
-		self.optionToAdd(null);
+		addNewOptionToOptionsList();
 	};
 
 	self.removeOption = function(optionToRemove) {
+		console.log(arguments);
 		var optionsToRemain = self.options().filter(function(option) {
 			return option !== optionToRemove;
 		});
@@ -716,15 +716,31 @@ function CreateDoodleViewModel() {
 	};
 
 	self.createDoodle = function() {
-		if (self.optionToAdd()){
-			self.options.push(self.optionToAdd());
-		}
+		addNewOptionToOptionsList();
 		var data = {
 			name: self.name(),
 			options: self.options()
 		};
 		console.log(data);
 	};
+
+	function addNewOptionToOptionsList() {
+		var optionToAdd = self.optionToAdd();
+		if (optionToAdd){
+			self.options.push(optionToAdd);
+		}
+		self.optionToAdd('');
+	}
+
+	function saveData(data) {
+		reqwest({
+			url: 'path/to/html',
+			method: 'post',
+			data: { foo: 'bar', baz: 100 }
+		).done(function(data){
+			console.log('saved');
+		});
+	}
 }
 
 ko.applyBindings(new CreateDoodleViewModel(), document.getElementById('createDoodle'));
