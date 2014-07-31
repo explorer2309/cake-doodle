@@ -5,8 +5,7 @@ function CreateDoodleViewModel() {
 	self.optionToAdd = ko.observable();
 
 	self.addOption = function() {
-		self.options.push(self.optionToAdd());
-		self.optionToAdd(null);
+		addNewOptionToOptionsList();
 	};
 
 	self.removeOption = function(optionToRemove) {
@@ -17,15 +16,24 @@ function CreateDoodleViewModel() {
 	};
 
 	self.createDoodle = function() {
-		if (self.optionToAdd()){
-			self.options.push(self.optionToAdd());
-		}
+		addNewOptionToOptionsList();
 		var data = {
 			name: self.name(),
 			options: self.options()
 		};
 		console.log(data);
 	};
+
+	function addNewOptionToOptionsList() {
+		if (self.optionToAdd()){
+			self.options.push(self.optionToAdd());
+		}
+		self.optionToAdd(null);
+	}
+
+	function saveData(data) {
+
+	}
 }
 
 ko.applyBindings(new CreateDoodleViewModel(), document.getElementById('createDoodle'));
