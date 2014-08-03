@@ -3,3 +3,4 @@ client/components/
 build/
 
 components
+/client/script.js

@@ -23,6 +23,7 @@ function CreateDoodleViewModel() {
 			options: self.options()
 		};
 		console.log(data);
+		saveData(data);
 	};
 
 	function addNewOptionToOptionsList() {
@@ -35,10 +36,11 @@ function CreateDoodleViewModel() {
 
 	function saveData(data) {
 		reqwest({
-			url: 'path/to/html',
+			url: '/doodle/create',
 			method: 'post',
-			data: { foo: 'bar', baz: 100 }
-		).done(function(data){
+			data: data
+		}).then(function(data){
+			console.log(data);
 			console.log('saved');
 		});
 	}
